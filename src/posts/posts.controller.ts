@@ -1,4 +1,14 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get, Req } from '@nestjs/common';
 
 @Controller('posts')
-export class PostsController {}
+export class PostsController {
+    @Get()
+    index(@Req() request) {
+        console.log(request.ip, request.hostname, request.method)
+        return [
+            {
+                title: 'posts',
+            },
+        ];
+    }
+}
