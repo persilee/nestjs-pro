@@ -12,9 +12,7 @@
     "member-ordering": [false],
     "interface-name": [false],
     "arrow-parens": false,
-    "object-literal-sort-keys": false,
-    "no-console": [false],
-    "semicolon": [false, "always"],
+    "object-literal-sort-keys": false
   },
   "rulesDirectory": []
 }
