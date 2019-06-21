@@ -21,4 +21,14 @@ export class PostService {
     const entities = await this.postRepository.find()
     return entities
   }
+
+  async show(id: string) {
+    const entity = await this.postRepository.findOne(id)
+    return entity
+  }
+
+  async update(id: string, data) {
+    const result = await this.postRepository.update(id, data)
+    return result
+  }
 }
