@@ -1,4 +1,4 @@
-import { Injectable, BadRequestException } from '@nestjs/common';
+import { Injectable, BadRequestException, NotFoundException } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { User } from './user.entity';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -21,6 +21,16 @@ export class UserService {
 
     const entity =  await this.userRepository.create(data)
     await this.userRepository.save(entity)
+    return entity
+  }
+
+  async show(id: string) {
+    const entity = await this.userRepository.findOne(id)
+
+    if (!entity) {
+      throw new NotFoundException('该用户不存在！')
+    }
+
     return entity
   }
 }
