@@ -9,10 +9,7 @@ import { PassportModule } from '@nestjs/passport';
 @Module({
   imports: [
     TypeOrmModule.forFeature([Post]),
-    AuthModule,
-    PassportModule.register({
-      defaultStrategy: 'jwt'
-    })
+    AuthModule
   ],
   controllers: [PostController],
   providers: [PostService]
