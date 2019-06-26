@@ -16,7 +16,8 @@
     "no-console": [false],
     "semicolon": [false, "always"],
     "trailing-comma": [false],
-    "indent": [false,"tabs",2]
+    "indent": [false,"tabs",2],
+    "no-trailing-whitespace": [true, "ignore-blank-lines"]
   },
   "rulesDirectory": []
 }
