@@ -9,7 +9,8 @@ import {
 	UseGuards,
 	UseInterceptors,
 	ClassSerializerInterceptor,
-  ParseIntPipe
+  ParseIntPipe,
+  Query
 } from '@nestjs/common';
 import { PostService } from './post.service';
 import { async } from 'rxjs/internal/scheduler/async';
@@ -51,7 +52,23 @@ export class PostController {
 
   @Post(':id/vote')
   @UseGuards(AuthGuard())
-	async vote(@Param('id', ParseIntPipe) id: number, @User() user: UserEntity) {
-    return await this.postService.vote(id, user)
+	async vote(
+    @Param('id', ParseIntPipe) id: number,
+    @User() user: UserEntity,
+    // @Query('method') method: string
+    ) {
+      // if (method === 'delete') {
+      //   return await this.postService.unVote(id, user)
+      // }
+      return await this.postService.vote(id, user)
   }
+
+    @Delete(':id/vote')
+    @UseGuards(AuthGuard())
+    async unVote(
+      @Param('id', ParseIntPipe) id: number,
+      @User() user: UserEntity
+      ) {
+        return await this.postService.unVote(id, user)
+    }
 }
