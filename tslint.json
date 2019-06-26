@@ -15,7 +15,8 @@
     "object-literal-sort-keys": false,
     "no-console": [false],
     "semicolon": [false, "always"],
-    "trailing-comma": [false]
+    "trailing-comma": [false],
+    "indent": [false,"tabs",2]
   },
   "rulesDirectory": []
 }

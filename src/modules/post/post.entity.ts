@@ -3,21 +3,17 @@ import { User } from '../user/user.entity';
 
 @Entity()
 export class Post {
-    @PrimaryGeneratedColumn()
-    id: number
+	@PrimaryGeneratedColumn() id: number;
 
-    @Column()
-    title: string
+	@Column() title: string;
 
-    @Column('longtext', {nullable: true})
-    body: string
+	@Column('longtext', { nullable: true })
+	body: string;
 
-    @CreateDateColumn()
-    created: Date
+	@CreateDateColumn() created: Date;
 
-    @UpdateDateColumn()
-    updated: Date
+	@UpdateDateColumn() updated: Date;
 
-    @ManyToOne(type => User, user => user.posts)
-    user: User
+	@ManyToOne((type) => User, (user) => user.posts)
+	user: User;
 }

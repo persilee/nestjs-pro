@@ -7,41 +7,37 @@ import { User } from '../user/user.entity';
 
 @Injectable()
 export class PostService {
-  constructor(
-    @InjectRepository(Post)
-    private readonly postRepository: Repository<Post>
-  ) {}
+	constructor(@InjectRepository(Post) private readonly postRepository: Repository<Post>) {}
 
-  async store(data: PostDto, user: User) {
-    const entity = await this.postRepository.create(data)
-    await this.postRepository.save({
-      ...
-      entity,
-      user
-    })
+	async store(data: PostDto, user: User) {
+		const entity = await this.postRepository.create(data);
+		await this.postRepository.save({
+			...entity,
+			user
+		});
 
-    return entity
-  }
+		return entity;
+	}
 
-  async index() {
-    const entities = await this.postRepository.find({
-      relations: ['user']
-    })
-    return entities
-  }
+	async index() {
+		const entities = await this.postRepository.find({
+			relations: [ 'user' ]
+		});
+		return entities;
+	}
 
-  async show(id: string) {
-    const entity = await this.postRepository.findOne(id)
-    return entity
-  }
+	async show(id: string) {
+		const entity = await this.postRepository.findOne(id);
+		return entity;
+	}
 
-  async update(id: string, data: Partial<PostDto>) {
-    const result = await this.postRepository.update(id, data)
-    return result
-  }
+	async update(id: string, data: Partial<PostDto>) {
+		const result = await this.postRepository.update(id, data);
+		return result;
+	}
 
-  async destroy(id: string) {
-    const result = await this.postRepository.delete(id)
-    return result
-  }
+	async destroy(id: string) {
+		const result = await this.postRepository.delete(id);
+		return result;
+	}
 }
